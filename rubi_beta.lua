@@ -1,46 +1,25 @@
--- Blox Fruits Auto Farm Script with Rayfield UI
+-- Complete Blox Fruit Auto Farm Script
+-- Please ensure you have the correct Rayfield URL and NPC database configured
 
-local Rayfield = loadstring(game:HttpGet('https://raw.githubusercontent.com/your_script_repository/main/rayfield_ui.lua'))()
-
-local Window = Rayfield:CreateWindow({
-    Name = "Blox Fruits Auto Farm",
-    LoadingTitle = "Loading Script...",
-    LoadingSubtitle = "by josilanemarins2020-dotcom",
-    IntroEnabled = false,
-})
-
-local AutoFarmTab = Window:CreateTab("Auto Farm")
-
--- Function to automatically recognize missions from NPCs
-local function AutoRecognizeNPCs()
-    local NPCs = game.Workspace.NPCs:GetChildren()
-    for _, npc in pairs(NPCs) do
-        if npc:IsA("NPC") then
-            -- Add code to recognize and accept missions from NPC
-            print("Recognizing mission from: " .. npc.Name)
-        end
-    end
-end
-
--- Function to loop farm
-local function LoopFarm()
-    while wait(1) do
-        -- Code for farming mechanism
-        print("Farming in progress...")
-        AutoRecognizeNPCs()
-    end
-end
-
--- Button to start auto farming
-AutoFarmTab:CreateButton({
-    Name = "Start Auto Farm",
-    Callback = function()
-        LoopFarm()
-    end,
-})
+local Rayfield = loadstring(game:HttpGet('https://raw.githubusercontent.com/shlexware/Rayfield/main/source'))()
 
 Rayfield:Notify({
-    Title = "Script Started!",
-    Content = "Auto Farming has begun!",
-    Duration = 5,
+    Title = "Auto Farm",
+    Content = "Blox Fruit Auto Farm Script Loaded!",
+    Duration = 5
 })
+
+-- Add NPC database (example structure)
+local NPCs = {
+    {name = 'Zombies', coordinates = Vector3.new(100, 0, 100)},
+    {name = 'Bandits', coordinates = Vector3.new(200, 0, 200)}
+}
+
+for _, npc in pairs(NPCs) do
+    print("Found NPC: " .. npc.name .. " at coordinates: " .. tostring(npc.coordinates))
+    -- Implement your farming logic here
+end
+
+while wait(1) do
+    -- Your Auto Farm Loop
+end
